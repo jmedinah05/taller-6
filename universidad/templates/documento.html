@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Documentos </title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
+    <!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <style>
+        body {
+  padding-top: 5rem;
+}
+
+        </style>
+  </head>
+  <body>
+    
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+  <div class="nav navbar-nav">
+    <a class="nav-item nav-link active" href="{%url 'inicio'%}">Inicio</a>
+    <a class="nav-item nav-link active" href="{%url 'documento'%}">Documentos</a>
+  </div>
+</nav>
+<br>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+     
+        <div class="card">
+            <h5 class="card-header">
+                <a class="btn btn-primary" href="{%url 'crear'%}" role="button">Nuevo tipo documento</a>
+            </h5>
+            <div class="card-body">
+              <h5 class="card-title">Documentos</h5>
+              
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">nombre</th>
+                    <th scope="col">descripcion</th>
+                    <th scope="col">accion</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  {% for documento in documento%}
+
+                  <tr>
+                    <td>{{ documento.id }}</td>
+                    <td>{{ documento.nombre }}</td>
+                    <td>{{ documento.descripcion }}</td>
+                    <td><a class="btn btn-success" href="{%url 'editar' documento.id%}" role="button">Editar</a> | <a class="btn btn-danger" href="{%url 'borrar' documento.id%}" role="button">Borrar</a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+            <br>
+          <p class="font-monospace">Tipos de documentos:</p>
+          <ul>
+            <li><p class="card-text">Cedula de ciudadania o CC</p>
+            </li>
+            <li><p class="card-text">Tarjeta de identidad o TI</p></li>
+            <li><p class="card-text">Contraseña</p></li>
+            <li><p class="card-text">Cedula de ciudadania o CC</p></li>
+            <li><p class="card-text">Pasaporte</p></li>
+            <li><p class="card-text">Cedula extranjera o CE</p></li>
+            </ul>
+
+      </div>
+    </div>
+  </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
